@@ -35,7 +35,7 @@ setup(
       keywords = ["network", "visualization", "NLP"],
       entry_points={
         'console_scripts': [
-            'junkware = junkware:junkware'
+            'junkware = junkware.junkware:main'
         ],
     },
     license='GPL',
