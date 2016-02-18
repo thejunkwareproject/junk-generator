@@ -17,18 +17,17 @@ version = "0.0.1" # [major].[minor].[release]
 with open('README.md') as readme_file:
     long_description = readme_file.read()
 
+# parse requirements
+with open('requirements.txt') as f:
+    required = [x for x in f.read().splitlines() if 'git+https' not in x] # TODO - how to fix this?
 
-# parse requirements for python 2
-if sys.version_info[0] == 2:
-    with open('requirements-python2.txt') as f:
-        required += [dep for dep in f.read().splitlines() if dep != "-r requirements.txt"]
 setup(
       name = "junkware",
       packages = find_packages(exclude=['tests']) ,
       version = version,
       description = "Patent Junk Generator",
       long_description = long_description,
-      author = "Clément Renaud",
+      author = "Clement Renaud",
       author_email = "clement.renaud@gmail.com",
       url = "http://junkware.io",
       download_url = "http://github.com/thejunkwareproject/junkware",
