@@ -24,9 +24,9 @@ Download NLP corpora
 
     python -m textblob.download_corpora
 
-Download the patent corpus in the ```/data``` folder by [clicking here]( https://github.com/thejunkwareproject/junkware/blob/master/data/patents/Patents.sqlite3) or copy/pasting the following command in your terminal.
+Download the patent corpus in the ```/data``` folder by [clicking here]( https://raw.githubusercontent.com/thejunkwareproject/junkware/master/data/patents/Patents.sqlite3) or copy/pasting the following command in your terminal.
 
-    wget -P data https://github.com/thejunkwareproject/junkware/blob/master/data/patents/Patents.sqlite3
+    wget -P data https://raw.githubusercontent.com/thejunkwareproject/junkware/master/data/patents/Patents.sqlite3
 
 
 ### Post on twitter
