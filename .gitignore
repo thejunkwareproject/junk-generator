@@ -1,6 +1,7 @@
 .env
 venv
 assets/*
+junk
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

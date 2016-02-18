@@ -2,23 +2,22 @@
 
 A Python script to generate random objects from a patent database.
 
-    ─$ junkware -h
-    Usage: junkware [options]
+Generate an object
 
-    Options:
-      -h, --help         show this help message and exit
-      -v, --verbose      don't print status messages to stdout
-      -t, --title        print the Junk object title to stout
-      -a, --abstract     print the Junk object abstract to stout
-      -d, --description  print the Junk object description to stout
-      -s, --shape        print the Junk object shape to stout
+    junkware # generate its definition
+    junkware -p # generate the associated STL 3d model
+    junkware -tads # t,a,d options allow to print title, abstract, description
+
+Check the help with
+
+    junkware -h
 
 
 
 ### Install
 
     git clone http://thejunkwareproject/junk-generator && cd junk-generator
-    python setup.py develop
+    python setup.py
 
 Download NLP corpora
 
