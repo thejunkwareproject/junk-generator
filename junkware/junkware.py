@@ -104,6 +104,17 @@ def create_STL_file(stl_file_path, scad_file_path):
 
     print "STL file saved at %s"%stl_file_path
 
+def create_PNG_thumbnail(scad_file_path, png_file_path):
+    cmd = 'openscad  --projection=o --camera=0,0,0,55,0,25,328 --imgsize=1000,1000  -o "%s" %s'%(png_file_path, scad_file_path)
+
+    # no block, it start a sub process.
+    p = subprocess.Popen(cmd , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    # and you can block util the cmd execute finish
+    p.wait()
+
+    print "PNG file saved at %s"%png_file_path
+
 
 def generate_title(patents):
     # title
@@ -193,6 +204,9 @@ def main():
         stl_file_path = os.path.join(dest_folder,"%s.stl"%options.output_dir)
         create_STL_file(stl_file_path, scad_file_path)
 
+        # create thumbnail
+        png_file_path = os.path.join(dest_folder,"%s.png"%options.output_dir)
+        create_PNG_thumbnail(scad_file_path, png_file_path)
 
     # display options
     if options.title :
