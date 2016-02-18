@@ -1,6 +1,8 @@
 # junkware-bot
 Generate and tweet fictional patent
 
+see [@_junkware](http://twitter.com/_junkware)
+
 
 Using Twitter command-line util [t](https://github.com/sferik/t#features)
 
