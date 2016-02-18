@@ -12,11 +12,14 @@ Check the help with
 
     junkware -h
 
+To generate the 3D models, you will need to install [OpenSCAD](http://www.openscad.org/)
+
+    sudo apt-get install openscad
 
 
 ### Install
 
-    git clone http://thejunkwareproject/junk-generator && cd junk-generator
+    git clone http://github.com/thejunkwareproject/junk-generator && cd junk-generator
     python setup.py
 
 Download NLP corpora

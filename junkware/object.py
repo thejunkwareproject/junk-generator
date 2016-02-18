@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from nltk.corpus.reader.plaintext import PlaintextCorpusReader
-import bard
 import os
 import shutil
 import codecs
@@ -64,13 +63,9 @@ class ObjectGenerator(object):
 
         newcorpus = PlaintextCorpusReader(self.corpusdir, '.*')
 
-        # bard.sents = newcorpus.sents
-        bard.tokens = newcorpus.words()
-        # print len(bard.tokens)
-
         # print 'init markov NLG text generator'
 
-        self.generator = IntelligentMarkovGenerator(bard.tokens)
+        self.generator = IntelligentMarkovGenerator(newcorpus.words())
 
     def generate_definition(self, _nb_sentences, _word_count):
         try:
