@@ -2,17 +2,17 @@
 
 A Python script to generate random objects from a patent database.
 
-Generate title
+    ─$ junkware -h
+    Usage: junkware [options]
 
-    junkware -t
+    Options:
+      -h, --help         show this help message and exit
+      -v, --verbose      don't print status messages to stdout
+      -t, --title        print the Junk object title to stout
+      -a, --abstract     print the Junk object abstract to stout
+      -d, --description  print the Junk object description to stout
+      -s, --shape        print the Junk object shape to stout
 
-Generate description
-
-    junkware -d
-
-Generate fictional objects
-
-    junkware --STL # get a STL file
 
 
 ### Install
