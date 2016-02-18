@@ -3,7 +3,7 @@
 
 import os
 import sys
-import argparse
+from optparse import OptionParser
 
 import random
 from corpus import PatentCorpus
@@ -14,7 +14,10 @@ from nlp import NLP
 
 import logging
 logger = logging.getLogger('junkware')
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG) # show logs
+
+# mysterious bug from stack overflow http://newbebweb.blogspot.fr/2012/02/python-head-ioerror-errno-32-broken.html
+from signal import signal, SIGPIPE, SIG_DFL
+signal(SIGPIPE,SIG_DFL)
 
 corpus_path='data/Patents.sqlite3'
 nb_patent = 10 # number of patents loaded
@@ -65,22 +68,40 @@ def generate_title(patents):
 
 def generate_junk():
     patents = get_random_patents()
-    generate_title(patents)
-    generate_description(patents) # random.randint(10,25) for more paragraphs
+    title = generate_title(patents)
+    description = generate_description(patents) # random.randint(10,25) for more paragraphs
+    return {
+        "title": title,
+        "description": description[0]
+    }
 
-def parse_args():
+
+def get_cli_args_parser():
     # parse command line arguments
-    p = argparse.ArgumentParser()
+    p = OptionParser()
+    p.add_option('-v', '--verbose', action="store_true", dest="verbose", help="don't print status messages to stdout", default=False)
+    p.add_option('-t', '--title', action="store_true", dest="title", help="print the Junk object title to stout", default=False)
+    p.add_option('-d', '--description', action="store_true", dest="description", help="print the Junk object description to stout", default=False)
+
+    return p
 
 def main():
 
     # load parser
-    parser = parse_args()
+    parser = get_cli_args_parser()
 
     # get cli args
-    # args = parser.parse_args(sys.argv[1:])
+    (options, args) = parser.parse_args()
+    if options.verbose :
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG) # show logs
 
-    generate_junk()
+    junk = generate_junk()
+
+    if options.title :
+        print junk["title"]
+
+    if options.description :
+        print junk["description"]
 
 
 
